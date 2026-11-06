@@ -1,8 +1,0 @@
-# Project Coding Standards
-- PHP 8.2+ and Laravel 11+.
-- Every PHP file MUST start with `declare(strict_types=1);`.
-- Follow PSR-12 coding standards strictly.
-- Use Eloquent Models with explicit `$fillable` and `casts()` method.
-- Use FormRequest classes for any POST/PUT validation.
-- Return clean JSON responses with proper HTTP status codes (200, 201, 404, 422).
-- Do NOT invent non-existent packages or methods.
