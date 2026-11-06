@@ -21,7 +21,10 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Test User', 'password' => bcrypt('password')]
         );
 
-        // 2. Call official WHMCS Schema Seeder
-        $this->call(WhmcsMockSeeder::class);
+        // 2. Call official WHMCS Schema Seeder & License Seeder
+        $this->call([
+            WhmcsMockSeeder::class,
+            WhmcsLicenseSeeder::class,
+        ]);
     }
 }

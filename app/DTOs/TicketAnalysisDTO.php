@@ -42,4 +42,22 @@ readonly class TicketAnalysisDTO
             customerMood: (string) $data['customer_mood'],
         );
     }
+
+    /**
+     * Convert DTO to associative array for API responses and WHMCS storage.
+     *
+     * @return array<string, mixed>
+     */
+    public function toArray(): array
+    {
+        return [
+            'reasoning'            => $this->reasoning,
+            'matched_kb_article'   => $this->matchedKbArticle,
+            'department'           => $this->department,
+            'priority'             => $this->priority,
+            'is_invoice_mentioned' => $this->isInvoiceMentioned,
+            'suggested_reply'      => $this->suggestedReply,
+            'customer_mood'        => $this->customerMood,
+        ];
+    }
 }

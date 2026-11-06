@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\WhmcsClient;
 use App\Models\WhmcsDepartment;
 use App\Models\WhmcsInvoice;
+use App\Models\WhmcsLicense;
 use App\Models\WhmcsTicket;
 use App\Models\WhmcsTicketReply;
 use Illuminate\Http\JsonResponse;
@@ -46,44 +47,102 @@ class WhmcsMockController extends Controller
         return response()->json($ticket);
     }
 
-    public function analyzeTicket(int $id): JsonResponse
+    /**
+     * Check status and remaining quota of the verified SaaS license.
+     */
+    public function licenseStatus(Request $request): JsonResponse
     {
-        // 1. Official WHMCS DB se Ticket + Client + Invoices lein
-        $ticket = WhmcsTicket::with('client.invoices')->findOrFail($id);
+        /** @var WhmcsLicense|null $license */
+        $license = $request->attributes->get('license');
 
-        // 2. Client Invoices Context
-        $invoiceContext = $ticket->client->invoices
-            ->map(fn ($inv) => "{$inv->invoicenum}: \${$inv->total} ({$inv->status})")
-            ->implode(', ');
+        if (!$license) {
+            return response()->json([
+                'status'  => 'error',
+                'message' => 'No license context available.',
+            ], 400);
+        }
+
+        return response()->json([
+            'status'  => 'success',
+            'license' => [
+                'license_key'     => $license->license_key,
+                'client_name'     => $license->client_name,
+                'status'          => $license->status,
+                'tier'            => $license->tier,
+                'monthly_limit'   => $license->monthly_limit,
+                'usage_count'     => $license->usage_count,
+                'remaining_quota' => $license->remainingQuota(),
+                'last_used_at'    => $license->last_used_at?->toIso8601String(),
+                'expires_at'      => $license->expires_at?->toIso8601String(),
+            ],
+            'portal'  => 'https://huzaifaazeem.com/',
+        ]);
+    }
+
+    /**
+     * Analyze ticket with Supabase pgvector RAG + Gemini Chain-of-Thought.
+     * Supports both local mock DB testing and remote production WHMCS Hooks.
+     */
+    public function analyzeTicket(Request $request, ?int $id = null): JsonResponse
+    {
+        /** @var WhmcsLicense|null $license */
+        $license = $request->attributes->get('license');
+
+        $isRemotePayload = $request->filled('subject') && $request->filled('message');
+        $localTicket = null;
+
+        if ($isRemotePayload) {
+            // 1a. Payload from Live WHMCS Hook
+            $subject        = (string) $request->input('subject');
+            $message        = (string) $request->input('message');
+            $clientName     = (string) $request->input('client_name', 'Valued Client');
+            $clientEmail    = (string) $request->input('client_email', '');
+            $invoiceContext = (string) $request->input('invoices_summary', 'No invoices provided');
+            $ticketId       = (int) ($id ?? $request->input('ticket_id', 0));
+            $ticketTid      = 'TICK-' . ($ticketId > 0 ? $ticketId : rand(100000, 999999));
+        } else {
+            // 1b. Payload from Local Testbed Mock DB
+            $targetId = $id ?? (int) $request->input('ticket_id', 1);
+            $localTicket = WhmcsTicket::with('client.invoices')->findOrFail($targetId);
+
+            $subject        = $localTicket->title;
+            $message        = $localTicket->message;
+            $clientName     = $localTicket->client->name;
+            $clientEmail    = $localTicket->client->email;
+            $invoiceContext = $localTicket->client->invoices
+                ->map(fn ($inv) => "{$inv->invoicenum}: \${$inv->total} ({$inv->status})")
+                ->implode(', ');
+            $ticketId       = $localTicket->id;
+            $ticketTid      = $localTicket->tid;
+        }
 
         $apiKey = env('GEMINI_API_KEY');
-        $supabaseUrl = rtrim(env('SUPABASE_URL'), '/');
+        $supabaseUrl = rtrim((string) env('SUPABASE_URL'), '/');
         if (str_ends_with($supabaseUrl, '/rest/v1')) {
             $supabaseUrl = substr($supabaseUrl, 0, -8);
         }
         $supabaseKey = env('SUPABASE_KEY');
 
-        // 3. RAG: Ticket text ka Vector bana kar Supabase Cloud se matched article dhoondein
-        $ticketText = "{$ticket->title}. {$ticket->message}";
+        // 2. RAG: Vectorize ticket text and match verified KB article from Cloud Supabase pgvector
+        $ticketText = "{$subject}. {$message}";
         $matchedKbDoc = "None (No relevant knowledge base doc found)";
 
         $embedRes = Http::post("https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:embedContent?key={$apiKey}", [
-            'model' => 'models/gemini-embedding-001',
-            'content' => ['parts' => [['text' => $ticketText]]]
+            'model'   => 'models/gemini-embedding-001',
+            'content' => ['parts' => [['text' => $ticketText]]],
         ]);
 
         if ($embedRes->successful()) {
             $queryVector = $embedRes->json('embedding.values');
 
-            // Supabase Stored Procedure call
             $rpcRes = Http::withHeaders([
-                'apikey' => $supabaseKey,
+                'apikey'        => $supabaseKey,
                 'Authorization' => "Bearer {$supabaseKey}",
-                'Content-Type' => 'application/json',
+                'Content-Type'  => 'application/json',
             ])->post("{$supabaseUrl}/rest/v1/rpc/match_articles", [
                 'query_embedding' => $queryVector,
                 'match_threshold' => 0.60,
-                'match_count' => 1,
+                'match_count'     => 1,
             ]);
 
             if ($rpcRes->successful() && !empty($rpcRes->json())) {
@@ -92,56 +151,64 @@ class WhmcsMockController extends Controller
             }
         }
 
-        // 4. Prompt with RAG Knowledge Base Injection & Official WHMCS context
+        // 3. Prompt Construction with RAG & WHMCS Context
         $prompt = "Analyze this WHMCS support ticket using the provided verified Knowledge Base documentation and client billing context.\n\n"
-            . "Client Name: {$ticket->client->name} ({$ticket->client->email})\n"
+            . "Client Name: {$clientName} ({$clientEmail})\n"
             . "Client Invoices in WHMCS: {$invoiceContext}\n"
             . "Matched Knowledge Base Doc: {$matchedKbDoc}\n"
-            . "Ticket Masking ID: {$ticket->tid}\n"
-            . "Ticket Subject (Title): {$ticket->title}\n"
-            . "Ticket Message: {$ticket->message}\n\n"
+            . "Ticket Masking ID: {$ticketTid}\n"
+            . "Ticket Subject (Title): {$subject}\n"
+            . "Ticket Message: {$message}\n\n"
             . "INSTRUCTION: If a Matched Knowledge Base Doc is provided, integrate its exact technical recommendations into your suggested_reply!";
 
-        // 5. Gemini API Call with Strict Schema
+        // 4. Gemini API Call with Chain-of-Thought & Strict JSON Schema
         $response = Http::post("https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite-preview:generateContent?key={$apiKey}", [
             'systemInstruction' => [
                 'parts' => [
-                    ['text' => 'You are a Senior WHMCS Support & Billing Engineer. Analyze hosting tickets with strict logic. Always explain your reasoning and reference verified docs in your reply.']
+                    ['text' => 'You are a Senior WHMCS Support & Billing Engineer. Analyze hosting tickets with strict logic. Always explain your step-by-step reasoning and reference verified docs in your reply.']
                 ]
             ],
             'contents' => [
                 ['parts' => [['text' => $prompt]]],
             ],
             'generationConfig' => [
-                'temperature' => 0.1,
+                'temperature'      => 0.1,
                 'responseMimeType' => 'application/json',
-                'responseSchema' => [
-                    'type' => 'OBJECT',
+                'responseSchema'   => [
+                    'type'       => 'OBJECT',
                     'properties' => [
                         'reasoning' => [
-                            'type' => 'STRING',
+                            'type'        => 'STRING',
                             'description' => 'Step-by-step reasoning explaining why this priority and department were chosen.',
                         ],
                         'matched_kb_article' => [
-                            'type' => 'STRING',
+                            'type'        => 'STRING',
                             'description' => 'The title of the matched knowledge base article used, or None if no doc was relevant.',
                         ],
                         'department' => [
                             'type' => 'STRING',
                             'enum' => ['Billing', 'Technical Support', 'Sales'],
-                        ],                
+                        ],
                         'priority' => [
                             'type' => 'STRING',
                             'enum' => ['Low', 'Medium', 'High', 'Critical'],
                         ],
                         'is_invoice_mentioned' => ['type' => 'BOOLEAN'],
-                        'suggested_reply' => ['type' => 'STRING'],
-                        'customer_mood' => [
+                        'suggested_reply'      => ['type' => 'STRING'],
+                        'customer_mood'        => [
                             'type' => 'STRING',
                             'enum' => ['Calm', 'Frustrated', 'Angry'],
                         ],
                     ],
-                    'required' => ['reasoning', 'matched_kb_article', 'department', 'priority', 'is_invoice_mentioned', 'suggested_reply', 'customer_mood'],
+                    'required' => [
+                        'reasoning',
+                        'matched_kb_article',
+                        'department',
+                        'priority',
+                        'is_invoice_mentioned',
+                        'suggested_reply',
+                        'customer_mood',
+                    ],
                 ],
             ],
         ]);
@@ -150,40 +217,47 @@ class WhmcsMockController extends Controller
             return response()->json(['error' => $response->json()], 502);
         }
 
-        // 6. Validate via DTO
+        // 5. Validate through Type-Safe DTO
         $jsonText = $response->json('candidates.0.content.parts.0.text');
         $dto = TicketAnalysisDTO::fromArray(json_decode((string) $jsonText, true));
 
-        // 7. Department ID resolve karein (tblticketdepartments)
-        $department = WhmcsDepartment::firstOrCreate(['name' => $dto->department]);
+        // 6. Update local DB if local ticket exists
+        if ($localTicket) {
+            $dept = WhmcsDepartment::firstOrCreate(['name' => $dto->department]);
+            $localTicket->did = $dept->id;
+            $localTicket->urgency = $dto->priority;
+            $localTicket->ai_analysis = $dto->toArray();
+            $localTicket->save();
 
-        // 8. Update official WHMCS table (tbltickets)
-        $ticket->update([
-            'did' => $department->id,
-            'urgency' => $dto->priority,
-            'ai_analysis' => [
-                'reasoning' => $dto->reasoning,
-                'matched_kb_article' => $dto->matchedKbArticle,
-                'customer_mood' => $dto->customerMood,
-                'is_invoice_mentioned' => $dto->isInvoiceMentioned,
-                'suggested_reply' => $dto->suggestedReply,
-            ],
-        ]);
-
-        // 9. Auto-create WHMCS ticket reply / staff draft (tblticketreplies)
-        WhmcsTicketReply::create([
-            'tid' => $ticket->id,
-            'userid' => 0,
-            'name' => 'AI Support Assistant',
-            'email' => 'ai-support@hosting.com',
-            'date' => now(),
-            'message' => $dto->suggestedReply,
-            'admin' => 'AI Bot',
-        ]);
+            WhmcsTicketReply::create([
+                'tid'     => $localTicket->id,
+                'userid'  => 0,
+                'name'    => 'AI Assistant (Draft)',
+                'email'   => 'ai-bot@huzaifaazeem.com',
+                'date'    => now(),
+                'message' => "[AI Auto-Draft - Internal Review Required]\n"
+                    . "Reasoning: {$dto->reasoning}\n"
+                    . "Matched KB: {$dto->matchedKbArticle}\n\n"
+                    . $dto->suggestedReply,
+                'admin'   => 'AI Bot',
+            ]);
+        }
 
         return response()->json([
-            'message' => 'Ticket analyzed with official WHMCS schema and updated successfully!',
-            'ticket' => $ticket->fresh(['client', 'departmentRelation', 'replies']),
+            'message' => 'Ticket analyzed successfully via Supabase RAG and Gemini AI.',
+            'license' => [
+                'client'          => $license?->client_name,
+                'tier'            => $license?->tier,
+                'remaining_quota' => $license?->remainingQuota(),
+            ],
+            'ticket'  => [
+                'id'          => $ticketId,
+                'tid'         => $ticketTid,
+                'status'      => 'Open',
+                'urgency'     => $dto->priority,
+                'department'  => $dto->department,
+                'ai_analysis' => $dto->toArray(),
+            ],
         ]);
     }
 }
