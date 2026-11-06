@@ -13,6 +13,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->validateCsrfTokens(except: [
+            'test-issue',
+        ]);
+
         $middleware->alias([
             'whmcs.license' => \App\Http\Middleware\VerifyWhmcsLicense::class,
         ]);

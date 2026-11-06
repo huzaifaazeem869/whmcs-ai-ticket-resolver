@@ -287,3 +287,73 @@ Artisan::command('ai:search-kb {query=I am eating an apple}', function ($query) 
         $this->line("   Excerpt: " . substr($row['content'], 0, 110) . "...");
     }
 });
+
+Artisan::command('ai:test-issue {number?}', function ($number = null) {
+    if ($number === null) {
+        $this->info("======================================================================");
+        $this->info("   WHMCS AI Support Ticket Auto-Resolver — 70 Issues CLI Tester       ");
+        $this->info("======================================================================");
+        $number = (int) $this->ask("Enter issue number to test (1 - 70)", "49");
+    }
+
+    $issue = \App\Services\HostingIssuesService::find((int) $number);
+    if (!$issue) {
+        $this->error("Issue #{$number} not found! Please choose between 1 and 70.");
+        return 1;
+    }
+
+    $this->info("\n[TESTING ISSUE #{$issue['id']}] {$issue['category']}");
+    $this->line("Title:   {$issue['title']}");
+    $this->line("Subject: {$issue['subject']}");
+    $this->line("Message: {$issue['message']}");
+    $this->line("Invoice: {$issue['invoices']}");
+    $this->comment("\nSending ticket to AI & Supabase RAG Pipeline...");
+
+    $request = \Illuminate\Http\Request::create('/api/analyze', 'POST', [
+        'license_key'      => 'HZ-AI-SUB-2026-LIVE',
+        'ticket_id'        => $issue['id'],
+        'client_name'      => $issue['client_name'],
+        'client_email'     => $issue['client_email'],
+        'subject'          => $issue['subject'],
+        'message'          => $issue['message'],
+        'invoices_summary' => $issue['invoices'],
+    ]);
+    $request->headers->set('X-AI-License-Key', 'HZ-AI-SUB-2026-LIVE');
+
+    $startTime = microtime(true);
+    $controller = app(\App\Http\Controllers\Api\WhmcsMockController::class);
+    $middleware = new \App\Http\Middleware\VerifyWhmcsLicense();
+    $res = $middleware->handle($request, fn ($req) => $controller->analyzeTicket($req));
+    $duration = round(microtime(true) - $startTime, 2);
+
+    $data = json_decode($res->getContent(), true);
+    if ($res->getStatusCode() !== 200 || !isset($data['ticket']['ai_analysis'])) {
+        $this->error("Analysis failed (HTTP {$res->getStatusCode()}): " . $res->getContent());
+        return 1;
+    }
+
+    $analysis = $data['ticket']['ai_analysis'];
+
+    $this->info("\n======================================================================");
+    $this->info("                       AI RESOLUTION REPORT ({$duration}s)             ");
+    $this->info("======================================================================");
+    $this->table(['Metric', 'AI Output'], [
+        ['Department', $analysis['department']],
+        ['Urgency / Priority', $analysis['priority']],
+        ['Customer Mood', $analysis['customer_mood']],
+        ['Invoice Mentioned?', $analysis['is_invoice_mentioned'] ? 'Yes' : 'No'],
+        ['Matched KB Doc', $analysis['matched_kb_article']],
+        ['Remaining Quota', $data['license']['remaining_quota'] ?? 'N/A'],
+    ]);
+
+    $this->info("\n[STEP-BY-STEP REASONING]");
+    $this->line($analysis['reasoning']);
+
+    $this->info("\n[SUGGESTED CUSTOMER REPLY]");
+    $this->comment($analysis['suggested_reply']);
+
+    $this->info("\n[WHMCS INTERNAL STAFF NOTE PREVIEW]");
+    $this->line("AddTicketReply (adminusername: AI Bot, noemail: true)");
+    $this->line("Status set to: " . $data['ticket']['status'] . ", Urgency: " . $data['ticket']['urgency']);
+    return 0;
+});

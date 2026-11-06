@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "category": "Billing & Invoices",
+    "title": "Invoice generate nahi hua / duplicate invoice ban gaya",
+    "subject": "Billing: Invoice generate nahi hua / duplicate invoice ban gaya",
+    "message": "Salam support team, mere invoice ke mutabiq issue hai: 'Invoice generate nahi hua / duplicate invoice ban gaya'. Please isko verify karein aur status update karein.",
+    "invoices": "INV-101: $25.00 (Unpaid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client1@domain.com"
+  },
+  {
+    "id": 2,
+    "category": "Billing & Invoices",
+    "title": "Customer kehta hai payment kar di lekin invoice “Unpaid” dikha raha hai",
+    "subject": "Billing: Customer kehta hai payment kar di lekin invoice “Unpaid” dikha raha hai",
+    "message": "Salam support team, mere invoice ke mutabiq issue hai: 'Customer kehta hai payment kar di lekin invoice “Unpaid” dikha raha hai'. Please isko verify karein aur status update karein.",
+    "invoices": "INV-102: $25.00 (Unpaid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client2@domain.com"
+  },
+  {
+    "id": 3,
+    "category": "Billing & Invoices",
+    "title": "Payment gateway (JazzCash, Easypaisa, bank transfer, PayPal, Stripe) se payment confirm nahi hui",
+    "subject": "Billing: Payment gateway (JazzCash, Easypaisa, bank transfer, PayPal, Stripe) se payment confirm nahi hui",
+    "message": "Salam support team, mere invoice ke mutabiq issue hai: 'Payment gateway (JazzCash, Easypaisa, bank transfer, PayPal, Stripe) se payment confirm nahi hui'. Please isko verify karein aur status update karein.",
+    "invoices": "INV-103: $25.00 (Unpaid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client3@domain.com"
+  },
+  {
+    "id": 4,
+    "category": "Billing & Invoices",
+    "title": "Manual bank transfer ka proof verify karke invoice mark paid karna",
+    "subject": "Billing: Manual bank transfer ka proof verify karke invoice mark paid karna",
+    "message": "Salam support team, mere invoice ke mutabiq issue hai: 'Manual bank transfer ka proof verify karke invoice mark paid karna'. Please isko verify karein aur status update karein.",
+    "invoices": "INV-104: $25.00 (Unpaid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client4@domain.com"
+  },
+  {
+    "id": 5,
+    "category": "Billing & Invoices",
+    "title": "Refund request (full ya partial)",
+    "subject": "Billing: Refund request (full ya partial)",
+    "message": "Salam support team, mere invoice ke mutabiq issue hai: 'Refund request (full ya partial)'. Please isko verify karein aur status update karein.",
+    "invoices": "INV-105: $25.00 (Unpaid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client5@domain.com"
+  },
+  {
+    "id": 6,
+    "category": "Billing & Invoices",
+    "title": "Credit balance add ya adjust karna",
+    "subject": "Billing: Credit balance add ya adjust karna",
+    "message": "Salam support team, mere invoice ke mutabiq issue hai: 'Credit balance add ya adjust karna'. Please isko verify karein aur status update karein.",
+    "invoices": "INV-106: $25.00 (Unpaid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client6@domain.com"
+  },
+  {
+    "id": 7,
+    "category": "Billing & Invoices",
+    "title": "Invoice mein galat amount, tax ya currency",
+    "subject": "Billing: Invoice mein galat amount, tax ya currency",
+    "message": "Salam support team, mere invoice ke mutabiq issue hai: 'Invoice mein galat amount, tax ya currency'. Please isko verify karein aur status update karein.",
+    "invoices": "INV-107: $25.00 (Unpaid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client7@domain.com"
+  },
+  {
+    "id": 8,
+    "category": "Billing & Invoices",
+    "title": "Promo code / coupon kaam nahi kar raha",
+    "subject": "Billing: Promo code / coupon kaam nahi kar raha",
+    "message": "Salam support team, mere invoice ke mutabiq issue hai: 'Promo code / coupon kaam nahi kar raha'. Please isko verify karein aur status update karein.",
+    "invoices": "INV-108: $25.00 (Unpaid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client8@domain.com"
+  },
+  {
+    "id": 9,
+    "category": "Billing & Invoices",
+    "title": "Auto-renewal fail hona (card decline, token expire)",
+    "subject": "Billing: Auto-renewal fail hona (card decline, token expire)",
+    "message": "Salam support team, mere invoice ke mutabiq issue hai: 'Auto-renewal fail hona (card decline, token expire)'. Please isko verify karein aur status update karein.",
+    "invoices": "INV-109: $25.00 (Unpaid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client9@domain.com"
+  },
+  {
+    "id": 10,
+    "category": "Billing & Invoices",
+    "title": "Late fee ya overdue notice par customer ka objection",
+    "subject": "Billing: Late fee ya overdue notice par customer ka objection",
+    "message": "Salam support team, mere invoice ke mutabiq issue hai: 'Late fee ya overdue notice par customer ka objection'. Please isko verify karein aur status update karein.",
+    "invoices": "INV-110: $25.00 (Unpaid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client10@domain.com"
+  },
+  {
+    "id": 11,
+    "category": "Orders & Account Activation",
+    "title": "Order place hua lekin service activate nahi hui (pending order)",
+    "subject": "General Inquiry: Order place hua lekin service activate nahi hui (pending order)",
+    "message": "Hi, mujhe hosting features ke bare me information chahiye: 'Order place hua lekin service activate nahi hui (pending order)'.",
+    "invoices": "No active invoices (New Customer)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client11@domain.com"
+  },
+  {
+    "id": 12,
+    "category": "Orders & Account Activation",
+    "title": "Fraud check flag hone par order hold ho jana",
+    "subject": "General Inquiry: Fraud check flag hone par order hold ho jana",
+    "message": "Hi, mujhe hosting features ke bare me information chahiye: 'Fraud check flag hone par order hold ho jana'.",
+    "invoices": "No active invoices (New Customer)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client12@domain.com"
+  },
+  {
+    "id": 13,
+    "category": "Orders & Account Activation",
+    "title": "Order accept karne ke baad provisioning fail hona",
+    "subject": "General Inquiry: Order accept karne ke baad provisioning fail hona",
+    "message": "Hi, mujhe hosting features ke bare me information chahiye: 'Order accept karne ke baad provisioning fail hona'.",
+    "invoices": "No active invoices (New Customer)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client13@domain.com"
+  },
+  {
+    "id": 14,
+    "category": "Orders & Account Activation",
+    "title": "Galat plan ya package order ho gaya, change chahiye",
+    "subject": "General Inquiry: Galat plan ya package order ho gaya, change chahiye",
+    "message": "Hi, mujhe hosting features ke bare me information chahiye: 'Galat plan ya package order ho gaya, change chahiye'.",
+    "invoices": "No active invoices (New Customer)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client14@domain.com"
+  },
+  {
+    "id": 15,
+    "category": "Orders & Account Activation",
+    "title": "Welcome email na milna",
+    "subject": "General Inquiry: Welcome email na milna",
+    "message": "Hi, mujhe hosting features ke bare me information chahiye: 'Welcome email na milna'.",
+    "invoices": "No active invoices (New Customer)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client15@domain.com"
+  },
+  {
+    "id": 16,
+    "category": "cPanel / Hosting Accounts",
+    "title": "cPanel login nahi ho raha / password reset",
+    "subject": "Hosting / cPanel: cPanel login nahi ho raha / password reset",
+    "message": "Hello team, mere hosting account par problem arahi hai: 'cPanel login nahi ho raha / password reset'. Please check karein.",
+    "invoices": "INV-116: $50.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client16@domain.com"
+  },
+  {
+    "id": 17,
+    "category": "cPanel / Hosting Accounts",
+    "title": "Account suspended (overdue ya resource abuse ki wajah se) aur unsuspend request",
+    "subject": "Hosting / cPanel: Account suspended (overdue ya resource abuse ki wajah se) aur unsuspend request",
+    "message": "Hello team, mere hosting account par problem arahi hai: 'Account suspended (overdue ya resource abuse ki wajah se) aur unsuspend request'. Please check karein.",
+    "invoices": "INV-117: $50.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client17@domain.com"
+  },
+  {
+    "id": 18,
+    "category": "cPanel / Hosting Accounts",
+    "title": "Disk space ya inode limit full",
+    "subject": "Hosting / cPanel: Disk space ya inode limit full",
+    "message": "Hello team, mere hosting account par problem arahi hai: 'Disk space ya inode limit full'. Please check karein.",
+    "invoices": "INV-118: $50.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client18@domain.com"
+  },
+  {
+    "id": 19,
+    "category": "cPanel / Hosting Accounts",
+    "title": "Bandwidth limit exceed",
+    "subject": "Hosting / cPanel: Bandwidth limit exceed",
+    "message": "Hello team, mere hosting account par problem arahi hai: 'Bandwidth limit exceed'. Please check karein.",
+    "invoices": "INV-119: $50.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client19@domain.com"
+  },
+  {
+    "id": 20,
+    "category": "cPanel / Hosting Accounts",
+    "title": "CPU / RAM / I/O limit hit hone se site slow ya 508 error",
+    "subject": "Hosting / cPanel: CPU / RAM / I/O limit hit hone se site slow ya 508 error",
+    "message": "Hello team, mere hosting account par problem arahi hai: 'CPU / RAM / I/O limit hit hone se site slow ya 508 error'. Please check karein.",
+    "invoices": "INV-120: $50.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client20@domain.com"
+  },
+  {
+    "id": 21,
+    "category": "cPanel / Hosting Accounts",
+    "title": "Account terminate ho gaya, data recovery chahiye",
+    "subject": "Hosting / cPanel: Account terminate ho gaya, data recovery chahiye",
+    "message": "Hello team, mere hosting account par problem arahi hai: 'Account terminate ho gaya, data recovery chahiye'. Please check karein.",
+    "invoices": "INV-121: $50.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client21@domain.com"
+  },
+  {
+    "id": 22,
+    "category": "cPanel / Hosting Accounts",
+    "title": "Package upgrade / downgrade request",
+    "subject": "Hosting / cPanel: Package upgrade / downgrade request",
+    "message": "Hello team, mere hosting account par problem arahi hai: 'Package upgrade / downgrade request'. Please check karein.",
+    "invoices": "INV-122: $50.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client22@domain.com"
+  },
+  {
+    "id": 23,
+    "category": "cPanel / Hosting Accounts",
+    "title": "Addon domain ya subdomain add nahi ho raha",
+    "subject": "Hosting / cPanel: Addon domain ya subdomain add nahi ho raha",
+    "message": "Hello team, mere hosting account par problem arahi hai: 'Addon domain ya subdomain add nahi ho raha'. Please check karein.",
+    "invoices": "INV-123: $50.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client23@domain.com"
+  },
+  {
+    "id": 24,
+    "category": "Domains",
+    "title": "Domain registration fail hona",
+    "subject": "Domain / DNS: Domain registration fail hona",
+    "message": "AOA, mere domain example24.pk par issue hai: 'Domain registration fail hona'. Please DNS records check karke guide karein.",
+    "invoices": "INV-124: $14.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client24@domain.com"
+  },
+  {
+    "id": 25,
+    "category": "Domains",
+    "title": "Domain transfer (auth/EPP code, transfer lock, pending approval)",
+    "subject": "Domain / DNS: Domain transfer (auth/EPP code, transfer lock, pending approval)",
+    "message": "AOA, mere domain example25.pk par issue hai: 'Domain transfer (auth/EPP code, transfer lock, pending approval)'. Please DNS records check karke guide karein.",
+    "invoices": "INV-125: $14.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client25@domain.com"
+  },
+  {
+    "id": 26,
+    "category": "Domains",
+    "title": "Domain renewal reminder aur expired domain ka redemption",
+    "subject": "Domain / DNS: Domain renewal reminder aur expired domain ka redemption",
+    "message": "AOA, mere domain example26.pk par issue hai: 'Domain renewal reminder aur expired domain ka redemption'. Please DNS records check karke guide karein.",
+    "invoices": "INV-126: $14.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client26@domain.com"
+  },
+  {
+    "id": 27,
+    "category": "Domains",
+    "title": "Nameservers update ya DNS propagation delay ki shikayat",
+    "subject": "Domain / DNS: Nameservers update ya DNS propagation delay ki shikayat",
+    "message": "AOA, mere domain example27.pk par issue hai: 'Nameservers update ya DNS propagation delay ki shikayat'. Please DNS records check karke guide karein.",
+    "invoices": "INV-127: $14.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client27@domain.com"
+  },
+  {
+    "id": 28,
+    "category": "Domains",
+    "title": "WHOIS privacy / contact details change",
+    "subject": "Domain / DNS: WHOIS privacy / contact details change",
+    "message": "AOA, mere domain example28.pk par issue hai: 'WHOIS privacy / contact details change'. Please DNS records check karke guide karein.",
+    "invoices": "INV-128: $14.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client28@domain.com"
+  },
+  {
+    "id": 29,
+    "category": "Domains",
+    "title": "Domain expire hone ke baad site down",
+    "subject": "Domain / DNS: Domain expire hone ke baad site down",
+    "message": "AOA, mere domain example29.pk par issue hai: 'Domain expire hone ke baad site down'. Please DNS records check karke guide karein.",
+    "invoices": "INV-129: $14.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client29@domain.com"
+  },
+  {
+    "id": 30,
+    "category": "Domains",
+    "title": "Domain ownership change (registrant transfer)",
+    "subject": "Domain / DNS: Domain ownership change (registrant transfer)",
+    "message": "AOA, mere domain example30.pk par issue hai: 'Domain ownership change (registrant transfer)'. Please DNS records check karke guide karein.",
+    "invoices": "INV-130: $14.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client30@domain.com"
+  },
+  {
+    "id": 31,
+    "category": "DNS & Email Records",
+    "title": "A / CNAME / MX / TXT record add ya edit karwana",
+    "subject": "Domain / DNS: A / CNAME / MX / TXT record add ya edit karwana",
+    "message": "AOA, mere domain example31.pk par issue hai: 'A / CNAME / MX / TXT record add ya edit karwana'. Please DNS records check karke guide karein.",
+    "invoices": "INV-131: $14.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client31@domain.com"
+  },
+  {
+    "id": 32,
+    "category": "DNS & Email Records",
+    "title": "Domain point hone ke baad bhi site nahi khul rahi",
+    "subject": "Domain / DNS: Domain point hone ke baad bhi site nahi khul rahi",
+    "message": "AOA, mere domain example32.pk par issue hai: 'Domain point hone ke baad bhi site nahi khul rahi'. Please DNS records check karke guide karein.",
+    "invoices": "INV-132: $14.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client32@domain.com"
+  },
+  {
+    "id": 33,
+    "category": "DNS & Email Records",
+    "title": "Cloudflare setup mein SSL ya redirect loop issue",
+    "subject": "Domain / DNS: Cloudflare setup mein SSL ya redirect loop issue",
+    "message": "AOA, mere domain example33.pk par issue hai: 'Cloudflare setup mein SSL ya redirect loop issue'. Please DNS records check karke guide karein.",
+    "invoices": "INV-133: $14.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client33@domain.com"
+  },
+  {
+    "id": 34,
+    "category": "DNS & Email Records",
+    "title": "SPF, DKIM, DMARC set up karna",
+    "subject": "Domain / DNS: SPF, DKIM, DMARC set up karna",
+    "message": "AOA, mere domain example34.pk par issue hai: 'SPF, DKIM, DMARC set up karna'. Please DNS records check karke guide karein.",
+    "invoices": "INV-134: $14.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client34@domain.com"
+  },
+  {
+    "id": 35,
+    "category": "Email Issues",
+    "title": "Email send nahi ho rahi (SMTP error, authentication failed)",
+    "subject": "Email: Email send nahi ho rahi (SMTP error, authentication failed)",
+    "message": "Hi, mere business email par problem arahi hai: 'Email send nahi ho rahi (SMTP error, authentication failed)'. Emails send ya receive nahi ho rahin.",
+    "invoices": "INV-135: $30.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client35@domain.com"
+  },
+  {
+    "id": 36,
+    "category": "Email Issues",
+    "title": "Email receive nahi ho rahi (MX, mailbox full)",
+    "subject": "Email: Email receive nahi ho rahi (MX, mailbox full)",
+    "message": "Hi, mere business email par problem arahi hai: 'Email receive nahi ho rahi (MX, mailbox full)'. Emails send ya receive nahi ho rahin.",
+    "invoices": "INV-136: $30.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client36@domain.com"
+  },
+  {
+    "id": 37,
+    "category": "Email Issues",
+    "title": "Emails spam mein ja rahi hain / IP blacklist",
+    "subject": "Email: Emails spam mein ja rahi hain / IP blacklist",
+    "message": "Hi, mere business email par problem arahi hai: 'Emails spam mein ja rahi hain / IP blacklist'. Emails send ya receive nahi ho rahin.",
+    "invoices": "INV-137: $30.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client37@domain.com"
+  },
+  {
+    "id": 38,
+    "category": "Email Issues",
+    "title": "Outlook, Gmail ya mobile mein email configure karna",
+    "subject": "Email: Outlook, Gmail ya mobile mein email configure karna",
+    "message": "Hi, mere business email par problem arahi hai: 'Outlook, Gmail ya mobile mein email configure karna'. Emails send ya receive nahi ho rahin.",
+    "invoices": "INV-138: $30.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client38@domain.com"
+  },
+  {
+    "id": 39,
+    "category": "Email Issues",
+    "title": "Mailbox quota full ya email password reset",
+    "subject": "Email: Mailbox quota full ya email password reset",
+    "message": "Hi, mere business email par problem arahi hai: 'Mailbox quota full ya email password reset'. Emails send ya receive nahi ho rahin.",
+    "invoices": "INV-139: $30.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client39@domain.com"
+  },
+  {
+    "id": 40,
+    "category": "Email Issues",
+    "title": "Webmail (Roundcube) login ya loading issue",
+    "subject": "Email: Webmail (Roundcube) login ya loading issue",
+    "message": "Hi, mere business email par problem arahi hai: 'Webmail (Roundcube) login ya loading issue'. Emails send ya receive nahi ho rahin.",
+    "invoices": "INV-140: $30.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client40@domain.com"
+  },
+  {
+    "id": 41,
+    "category": "Email Issues",
+    "title": "Server se spam outgoing hone par hourly email limit hit",
+    "subject": "Email: Server se spam outgoing hone par hourly email limit hit",
+    "message": "Hi, mere business email par problem arahi hai: 'Server se spam outgoing hone par hourly email limit hit'. Emails send ya receive nahi ho rahin.",
+    "invoices": "INV-141: $30.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client41@domain.com"
+  },
+  {
+    "id": 42,
+    "category": "SSL / Security",
+    "title": "SSL certificate install ya renew nahi ho raha (AutoSSL fail)",
+    "subject": "Security & SSL: SSL certificate install ya renew nahi ho raha (AutoSSL fail)",
+    "message": "Urgent: Meri site par security alert show ho raha hai: 'SSL certificate install ya renew nahi ho raha (AutoSSL fail)'. Please immediately assist.",
+    "invoices": "INV-142: $45.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client42@domain.com"
+  },
+  {
+    "id": 43,
+    "category": "SSL / Security",
+    "title": "“Not Secure” warning ya mixed content error",
+    "subject": "Security & SSL: “Not Secure” warning ya mixed content error",
+    "message": "Urgent: Meri site par security alert show ho raha hai: '“Not Secure” warning ya mixed content error'. Please immediately assist.",
+    "invoices": "INV-143: $45.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client43@domain.com"
+  },
+  {
+    "id": 44,
+    "category": "SSL / Security",
+    "title": "Website hack / malware / defaced hone ki report",
+    "subject": "Security & SSL: Website hack / malware / defaced hone ki report",
+    "message": "Urgent: Meri site par security alert show ho raha hai: 'Website hack / malware / defaced hone ki report'. Please immediately assist.",
+    "invoices": "INV-144: $45.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client44@domain.com"
+  },
+  {
+    "id": 45,
+    "category": "SSL / Security",
+    "title": "Malware scan aur cleanup request",
+    "subject": "Security & SSL: Malware scan aur cleanup request",
+    "message": "Urgent: Meri site par security alert show ho raha hai: 'Malware scan aur cleanup request'. Please immediately assist.",
+    "invoices": "INV-145: $45.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client45@domain.com"
+  },
+  {
+    "id": 46,
+    "category": "SSL / Security",
+    "title": "Brute force attack ya suspicious login attempts",
+    "subject": "Security & SSL: Brute force attack ya suspicious login attempts",
+    "message": "Urgent: Meri site par security alert show ho raha hai: 'Brute force attack ya suspicious login attempts'. Please immediately assist.",
+    "invoices": "INV-146: $45.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client46@domain.com"
+  },
+  {
+    "id": 47,
+    "category": "SSL / Security",
+    "title": "Account ya IP firewall (CSF) mein block ho gaya",
+    "subject": "Security & SSL: Account ya IP firewall (CSF) mein block ho gaya",
+    "message": "Urgent: Meri site par security alert show ho raha hai: 'Account ya IP firewall (CSF) mein block ho gaya'. Please immediately assist.",
+    "invoices": "INV-147: $45.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client47@domain.com"
+  },
+  {
+    "id": 48,
+    "category": "SSL / Security",
+    "title": "2FA lock out (customer ya admin account)",
+    "subject": "Security & SSL: 2FA lock out (customer ya admin account)",
+    "message": "Urgent: Meri site par security alert show ho raha hai: '2FA lock out (customer ya admin account)'. Please immediately assist.",
+    "invoices": "INV-148: $45.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client48@domain.com"
+  },
+  {
+    "id": 49,
+    "category": "Website & Application Errors",
+    "title": "500 Internal Server Error / .htaccess issue",
+    "subject": "Website Error: 500 Internal Server Error / .htaccess issue",
+    "message": "Emergency: Meri live WordPress site par error a raha hai: '500 Internal Server Error / .htaccess issue'. Site open nahi ho rahi.",
+    "invoices": "INV-149: $60.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client49@domain.com"
+  },
+  {
+    "id": 50,
+    "category": "Website & Application Errors",
+    "title": "403 Forbidden ya 404 Not Found",
+    "subject": "Website Error: 403 Forbidden ya 404 Not Found",
+    "message": "Emergency: Meri live WordPress site par error a raha hai: '403 Forbidden ya 404 Not Found'. Site open nahi ho rahi.",
+    "invoices": "INV-150: $60.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client50@domain.com"
+  },
+  {
+    "id": 51,
+    "category": "Website & Application Errors",
+    "title": "White screen of death (WordPress)",
+    "subject": "Website Error: White screen of death (WordPress)",
+    "message": "Emergency: Meri live WordPress site par error a raha hai: 'White screen of death (WordPress)'. Site open nahi ho rahi.",
+    "invoices": "INV-151: $60.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client51@domain.com"
+  },
+  {
+    "id": 52,
+    "category": "Website & Application Errors",
+    "title": "Database connection error",
+    "subject": "Website Error: Database connection error",
+    "message": "Emergency: Meri live WordPress site par error a raha hai: 'Database connection error'. Site open nahi ho rahi.",
+    "invoices": "INV-152: $60.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client52@domain.com"
+  },
+  {
+    "id": 53,
+    "category": "Website & Application Errors",
+    "title": "PHP version change ya extension enable karwana",
+    "subject": "Website Error: PHP version change ya extension enable karwana",
+    "message": "Emergency: Meri live WordPress site par error a raha hai: 'PHP version change ya extension enable karwana'. Site open nahi ho rahi.",
+    "invoices": "INV-153: $60.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client53@domain.com"
+  },
+  {
+    "id": 54,
+    "category": "Website & Application Errors",
+    "title": "WordPress plugin/theme conflict ya update ke baad site toot jana",
+    "subject": "Website Error: WordPress plugin/theme conflict ya update ke baad site toot jana",
+    "message": "Emergency: Meri live WordPress site par error a raha hai: 'WordPress plugin/theme conflict ya update ke baad site toot jana'. Site open nahi ho rahi.",
+    "invoices": "INV-154: $60.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client54@domain.com"
+  },
+  {
+    "id": 55,
+    "category": "Website & Application Errors",
+    "title": "File upload ya max execution time limit error",
+    "subject": "Website Error: File upload ya max execution time limit error",
+    "message": "Emergency: Meri live WordPress site par error a raha hai: 'File upload ya max execution time limit error'. Site open nahi ho rahi.",
+    "invoices": "INV-155: $60.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client55@domain.com"
+  },
+  {
+    "id": 56,
+    "category": "Backup & Migration",
+    "title": "Website migration (purane host se naye server par)",
+    "subject": "Backup / Migration: Website migration (purane host se naye server par)",
+    "message": "AOA, mujhe backup restore ya server migration me help chahiye: 'Website migration (purane host se naye server par)'.",
+    "invoices": "INV-156: $40.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client56@domain.com"
+  },
+  {
+    "id": 57,
+    "category": "Backup & Migration",
+    "title": "Backup restore request (files, database, email)",
+    "subject": "Backup / Migration: Backup restore request (files, database, email)",
+    "message": "AOA, mujhe backup restore ya server migration me help chahiye: 'Backup restore request (files, database, email)'.",
+    "invoices": "INV-157: $40.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client57@domain.com"
+  },
+  {
+    "id": 58,
+    "category": "Backup & Migration",
+    "title": "Backup download ya schedule karna",
+    "subject": "Backup / Migration: Backup download ya schedule karna",
+    "message": "AOA, mujhe backup restore ya server migration me help chahiye: 'Backup download ya schedule karna'.",
+    "invoices": "INV-158: $40.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client58@domain.com"
+  },
+  {
+    "id": 59,
+    "category": "Server & Infrastructure (VPS / Dedicated)",
+    "title": "VPS reboot, SSH access ya root password reset",
+    "subject": "Server / VPS: VPS reboot, SSH access ya root password reset",
+    "message": "Hello, mere VPS server par issue hai: 'VPS reboot, SSH access ya root password reset'. Please investigate.",
+    "invoices": "INV-159: $120.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client59@domain.com"
+  },
+  {
+    "id": 60,
+    "category": "Server & Infrastructure (VPS / Dedicated)",
+    "title": "Server down / high load / uptime ki complaint, aur maintenance ka notice",
+    "subject": "Server / VPS: Server down / high load / uptime ki complaint, aur maintenance ka notice",
+    "message": "Hello, mere VPS server par issue hai: 'Server down / high load / uptime ki complaint, aur maintenance ka notice'. Please investigate.",
+    "invoices": "INV-160: $120.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client60@domain.com"
+  },
+  {
+    "id": 61,
+    "category": "WHMCS Admin & System Side",
+    "title": "Cron job fail hona (invoices/emails/suspensions na chalna)",
+    "subject": "WHMCS System: Cron job fail hona (invoices/emails/suspensions na chalna)",
+    "message": "Support team, WHMCS automation par issue aya hai: 'Cron job fail hona (invoices/emails/suspensions na chalna)'.",
+    "invoices": "INV-161: $80.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client61@domain.com"
+  },
+  {
+    "id": 62,
+    "category": "WHMCS Admin & System Side",
+    "title": "WHMCS email templates ya SMTP settings issue (system emails na jana)",
+    "subject": "WHMCS System: WHMCS email templates ya SMTP settings issue (system emails na jana)",
+    "message": "Support team, WHMCS automation par issue aya hai: 'WHMCS email templates ya SMTP settings issue (system emails na jana)'.",
+    "invoices": "INV-162: $80.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client62@domain.com"
+  },
+  {
+    "id": 63,
+    "category": "WHMCS Admin & System Side",
+    "title": "Client area login, password reset ya email verification issue",
+    "subject": "WHMCS System: Client area login, password reset ya email verification issue",
+    "message": "Support team, WHMCS automation par issue aya hai: 'Client area login, password reset ya email verification issue'.",
+    "invoices": "INV-163: $80.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client63@domain.com"
+  },
+  {
+    "id": 64,
+    "category": "WHMCS Admin & System Side",
+    "title": "Support ticket reply email se ticket mein na aana (ticket piping)",
+    "subject": "WHMCS System: Support ticket reply email se ticket mein na aana (ticket piping)",
+    "message": "Support team, WHMCS automation par issue aya hai: 'Support ticket reply email se ticket mein na aana (ticket piping)'.",
+    "invoices": "INV-164: $80.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client64@domain.com"
+  },
+  {
+    "id": 65,
+    "category": "WHMCS Admin & System Side",
+    "title": "Module ya registrar API error (cPanel/WHM, Enom, ResellerClub)",
+    "subject": "WHMCS System: Module ya registrar API error (cPanel/WHM, Enom, ResellerClub)",
+    "message": "Support team, WHMCS automation par issue aya hai: 'Module ya registrar API error (cPanel/WHM, Enom, ResellerClub)'.",
+    "invoices": "INV-165: $80.00 (Paid)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client65@domain.com"
+  },
+  {
+    "id": 66,
+    "category": "Pre-Sales & General Queries",
+    "title": "Plan ya pricing ke bare mein sawal, upgrade guidance",
+    "subject": "General Inquiry: Plan ya pricing ke bare mein sawal, upgrade guidance",
+    "message": "Hi, mujhe hosting features ke bare me information chahiye: 'Plan ya pricing ke bare mein sawal, upgrade guidance'.",
+    "invoices": "No active invoices (New Customer)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client66@domain.com"
+  },
+  {
+    "id": 67,
+    "category": "Pre-Sales & General Queries",
+    "title": "Dedicated IP, extra resources ya add-on request",
+    "subject": "General Inquiry: Dedicated IP, extra resources ya add-on request",
+    "message": "Hi, mujhe hosting features ke bare me information chahiye: 'Dedicated IP, extra resources ya add-on request'.",
+    "invoices": "No active invoices (New Customer)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client67@domain.com"
+  },
+  {
+    "id": 68,
+    "category": "Pre-Sales & General Queries",
+    "title": "Cancellation request aur uska process",
+    "subject": "General Inquiry: Cancellation request aur uska process",
+    "message": "Hi, mujhe hosting features ke bare me information chahiye: 'Cancellation request aur uska process'.",
+    "invoices": "No active invoices (New Customer)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client68@domain.com"
+  },
+  {
+    "id": 69,
+    "category": "Pre-Sales & General Queries",
+    "title": "Service ya account ki details (login info, IP, nameserver) dobara maangna",
+    "subject": "General Inquiry: Service ya account ki details (login info, IP, nameserver) dobara maangna",
+    "message": "Hi, mujhe hosting features ke bare me information chahiye: 'Service ya account ki details (login info, IP, nameserver) dobara maangna'.",
+    "invoices": "No active invoices (New Customer)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client69@domain.com"
+  },
+  {
+    "id": 70,
+    "category": "Pre-Sales & General Queries",
+    "title": "Naye customer ki “kaise shuru karun” guidance",
+    "subject": "General Inquiry: Naye customer ki “kaise shuru karun” guidance",
+    "message": "Hi, mujhe hosting features ke bare me information chahiye: 'Naye customer ki “kaise shuru karun” guidance'.",
+    "invoices": "No active invoices (New Customer)",
+    "client_name": "Muhammad Ali",
+    "client_email": "client70@domain.com"
+  }
+]
