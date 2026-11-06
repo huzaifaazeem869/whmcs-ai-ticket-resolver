@@ -294,7 +294,7 @@ Suggested Reply will be drafted internally for human review before sending.
             const startTime = performance.now();
 
             try {
-                const res = await fetch('/test-issue', {
+                const res = await fetch('{{ url('/test-issue') }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
