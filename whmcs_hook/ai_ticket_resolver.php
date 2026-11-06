@@ -44,7 +44,7 @@ add_hook('TicketOpen', 1, function ($vars) {
 
     // 3. Configure API Endpoint & License Key
     // Production Cloud Endpoint on huzaifaazeem.com (or http://127.0.0.1:8000/api/analyze for local dev)
-    $apiEndpoint = "https://huzaifaazeem.com/whmcs-ai-ticket-resolver/api/analyze";
+    $apiEndpoint = "https://huzaifaazeem.com/whmcs-ai-ticket-resolver/public/api/analyze";
     $licenseKey  = "HZ-AI-SUB-2026-LIVE"; // Active SaaS Subscription Key issued by huzaifaazeem.com
 
     $payload = json_encode([
